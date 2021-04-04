@@ -22,13 +22,15 @@ public class MyLocaleResolver implements LocaleResolver {
      */
     @Override
     public Locale resolveLocale(HttpServletRequest request) {
-        return Locale.SIMPLIFIED_CHINESE;
-//        String lang = request.getParameter("lang");
-//        if (StringUtils.isEmpty(lang))
-//            return Locale.US;
-//        if (lang.startsWith("zh"))
-//            return Locale.SIMPLIFIED_CHINESE;
-//        return Locale.US;
+        String lang = request.getParameter("lang");
+        //如果没传，就按英语来
+        if (StringUtils.isEmpty(lang))
+            return Locale.US;
+        //因为中文种类太多，现只支持简体
+        if (lang.startsWith("zh"))
+            return Locale.SIMPLIFIED_CHINESE;
+        //暂不支持其他语言，其它语言都按英语来
+        return Locale.US;
     }
 
     @Override

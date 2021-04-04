@@ -10,11 +10,11 @@ import javax.annotation.Resource;
 @RequestMapping("testController")
 public class TestController {
     @Resource
-    private MessageUtil messageUtil;
+    private MessagesUtil messagesUtil;
 
     @ResponseBody
     @RequestMapping("sayHello")
     public String sayHello() {
-        return messageUtil.get("hello");
+        return messagesUtil.get("hello");
     }
 }
